@@ -12,9 +12,31 @@ export default class RandomChar extends Component {
             loading: true,
             error: false
         };
-        this.updateCharacter();
     }
     gotService = new GotService();
+
+    componentDidMount() {
+        this.setTimer = setInterval(() => {this.updateCharacter()}, 1500)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.setTimer);
+    }
+
+    verify_data = () => {
+        // console.log({...this.state.char}); // or simple this.state.char
+        this.setState(({char}) => {
+            // console.log(char);
+            for (var el in char){
+                // console.log(char[el])
+                if(char[el] === ""){
+                    char[el] = "-no data-";
+                }
+            }
+            return {char}
+            // console.log(char);
+        })
+    }
 
     onCharLoaded = (char) => {
         this.setState({
@@ -34,6 +56,7 @@ export default class RandomChar extends Component {
         const id = Math.floor(Math.random()*140 + 25);
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
+            .then(this.verify_data)
             .catch(this.onError)
     }
 
