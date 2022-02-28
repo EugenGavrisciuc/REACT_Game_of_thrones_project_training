@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import GotService from "../services/gotService"
 import Spinner from "../spinner/spinner"
 import './itemList.css';
+import {Link} from 'react-router-dom';
 
 export default class ItemList extends Component {
     constructor(props){
@@ -11,10 +11,11 @@ export default class ItemList extends Component {
             }
         
     }
-    gotService = new GotService();
 
     componentDidMount() {
-        this.gotService.getallCharacters()
+        const {getData} = this.props;
+
+        getData()
             .then( (charList) => {
                 this.props.updateCH(charList[0]);
                 this.setState({char: charList})
@@ -26,12 +27,14 @@ export default class ItemList extends Component {
         
         return arr.map((item) => {
             return (
+                <Link key={item.url+"1"} to={`${item.name}`}>
                 <li
-                key={item.url}
-                className="list-group-item"
-                onClick={() => this.props.showCH(item)}>
-                {item.name}
-                 </li>
+                    key={item.url}
+                    className="list-group-item"
+                    onClick={() => this.props.showCH(item)}>
+                    {item.name}
+                </li>
+                </Link>
             )
         })
     }

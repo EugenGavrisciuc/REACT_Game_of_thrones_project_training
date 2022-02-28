@@ -3,7 +3,7 @@ export default class GotService {
         this._apiBase = "https://www.anapioficeandfire.com/api";
     }
 
-    async getResource(url){
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
 
         if (!res.ok){
@@ -14,33 +14,42 @@ export default class GotService {
         return await res.json();
     }
 
-    async getallCharacters(){
+    getallCharacters = async () => {
         const res = await this.getResource(`/characters?page=5&pageSize=10`);
         return res.map(this._transformCharacter)
     }
 
-    async getCharacter(id){
+    getCharacter = async (id) => {
         const character = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(character);
     }
 
-    getAllHouses(){
-        return this.getResource(`/houses/`)
+    getAllHouses = async () => {
+        const houses = await this.getResource(`/houses`)
+        return houses.map(this._transformHouse)
     }
 
-    getHouse(id){
-        return this.getResource(`/houses/${id}`)
+    getHouse = async (id) => {
+        const house = await this.getResource(`/houses/${id}`)
+        return this._transformHouse(house)
     }
 
-    getAllBooks(){
-        return this.getResource(`/books/`)
+    getAllBooks = async () => {
+        const books = await this.getResource(`/books/`)
+        return books.map(this._transformBook)
     }
 
-    getBook(id){
-        return this.getResource(`/books/${id}`)
+    getBook = async (id) => {
+        const books = await this.getResource(`/books/${id}`)
+        return this._transformBook(books)
     }
 
     _transformCharacter(char){
+        for(let el in char){
+            if (char[el] === ""){
+                char[el] = "NO DATA";
+            }
+        }
         return{
             name: char.name,
             gender: char.gender,
@@ -52,22 +61,35 @@ export default class GotService {
     }
 
     _transformHouse(house){
+        // console.log(house) // Debugging
+        for(let el in house){
+            if (house[el] == ""){
+                house[el] = "NO DATA";
+            }
+        }
+
         return {
             name: house.name,
             region: house.region,
             words: house.words,
-            titles: house.titles,
-            overlord: house.overlord,
-            ancestralWeapons: house.ancestralWeapons
+            titles: house.titles.toString(),
+            ancestralWeapons: house.ancestralWeapons,
+            url: house.url
         }
     }
 
     _transformBook(book){
+        for(let el in book){
+            if (book[el] === ""){
+                book[el] = "NO DATA";
+            }
+        }
         return {
             name: book.name,
-            numberOfPages: book.numberOfpages,
+            numberOfPages: book.numberOfPages,
             publisher: book.publisher,
-            released: book.released
+            released: book.released,
+            url: book.url
         }
     }
 }

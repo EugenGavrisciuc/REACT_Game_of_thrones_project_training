@@ -5,7 +5,8 @@ import ErrorMessage from '../errorMessage';
 import GotService from '../services/gotService';
 import RowBlock from '../rowBlock/rowBlock';
 import {Field} from '../charDetails/charDetails';
-export default class CharacterPage extends Component{
+
+export default class HousePage extends Component{
     gotService = new GotService();
 
     constructor(){
@@ -39,30 +40,32 @@ export default class CharacterPage extends Component{
         }
 
         // const itemList = (
-        //     <ItemList
-        //         showCH={this.showChar}
-        //         updateCH={this.update_showcharclicked}
-        //         getData={this.gotService.getallCharacters}
-        //     />
+            // <ItemList
+            //     showCH={this.showChar}
+            //     updateCH={this.update_showcharclicked}
+            //     getData={this.gotService.getAllHouses}
+            // />
         // )
 
         // const charDetails = (
         //     <CharDetails characterdata={showcharclicked}>
-        //         <Field field="gender" label="Gender"/>
-        //         <Field field="born" label="Born"/>
-        //         <Field field="died" label="Died"/>
-        //         <Field field="culture" label="Culture"/>
+        //         <Field field="region" label="Region"/>
+        //         <Field field="words" label="Words"/>
+        //         <Field field="titles" label="Titles"/>
+        //         <Field field="overlord" label="Overlord"/>
+        //         <Field field="ancestralWeapons" label="Ancestral weapons"/>
         //     </CharDetails>
         // )
 
 
         return (
             // <RowBlock left={itemList} right={charDetails}/>
+
             <ItemList
-                showCH={this.showChar}
-                updateCH={this.update_showcharclicked}
-                getData={this.gotService.getallCharacters}
-            />
+            showCH={this.showChar}
+            updateCH={this.update_showcharclicked}
+            getData={this.gotService.getAllHouses}
+        />
         )
     }
 

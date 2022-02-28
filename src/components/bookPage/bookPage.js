@@ -4,12 +4,13 @@ import CharDetails from '../charDetails';
 import ErrorMessage from '../errorMessage';
 import GotService from '../services/gotService';
 import RowBlock from '../rowBlock/rowBlock';
-import {Field} from '../charDetails/charDetails';
-export default class CharacterPage extends Component{
+import {Field} from "../charDetails/charDetails";
+
+export default class BookPage extends Component{
     gotService = new GotService();
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state ={
             showcharclicked: null,
             error: false
@@ -24,8 +25,12 @@ export default class CharacterPage extends Component{
     }
 
     showChar = (el) => {
+        // console.log(el) //Debugging - On click, show clicked element
+        // console.log(el.name)
         this.props.getStateData(el);
-        this.setState({showcharclicked: el});
+        this.setState({
+            showcharclicked: el
+        });
     }
 
     update_showcharclicked = (value) => {
@@ -33,7 +38,7 @@ export default class CharacterPage extends Component{
     }
 
     render(){
-        const {showcharclicked} = this.state;
+        const {showcharclicked, titleclicked} = this.state;
         if (this.state.error){
             return <ErrorMessage/>
         }
@@ -42,27 +47,27 @@ export default class CharacterPage extends Component{
         //     <ItemList
         //         showCH={this.showChar}
         //         updateCH={this.update_showcharclicked}
-        //         getData={this.gotService.getallCharacters}
+        //         getData={this.gotService.getAllBooks}
         //     />
         // )
 
         // const charDetails = (
         //     <CharDetails characterdata={showcharclicked}>
-        //         <Field field="gender" label="Gender"/>
-        //         <Field field="born" label="Born"/>
-        //         <Field field="died" label="Died"/>
-        //         <Field field="culture" label="Culture"/>
+        //         <Field field="numberOfPages" label="Number of pages"/>
+        //         <Field field="publisher" label="Publisher"/>
+        //         <Field field="released" label="Released"/>
         //     </CharDetails>
         // )
 
 
         return (
             // <RowBlock left={itemList} right={charDetails}/>
-            <ItemList
-                showCH={this.showChar}
-                updateCH={this.update_showcharclicked}
-                getData={this.gotService.getallCharacters}
-            />
+
+                <ItemList
+                    showCH={this.showChar}
+                    updateCH={this.update_showcharclicked}
+                    getData={this.gotService.getAllBooks}
+                />
         )
     }
 
