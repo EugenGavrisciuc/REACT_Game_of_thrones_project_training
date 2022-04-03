@@ -1,15 +1,16 @@
-const jsonServer = require('json-server');
-const server = jsonServer.create();
-const router = jsonServer.router('./db.json');
-const middlewares = jsonServer.defaults({
-  static: './build'
+const express = require('express');
+const app = express();
+ 
+app.get('/', (req, res) => {
+  res
+    .status(200)
+    .send('Hello server is running')
+    .end();
 });
-const PORT = process.env.PORT || 8000;
-server.use(middlewares);
-server.use(jsonServer.rewriter({
-  '/api/*': '/$1',
-}))
-server.use(router);
-server.listen(PORT, () => {
-  console.log('Server is running');
+ 
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
 });
