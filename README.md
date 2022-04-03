@@ -1,3 +1,6 @@
+# Description
+This is a pet-project based on REACT.js. It was made to improve the practice in using react class components and react lifecycle methods.
+Also I used other tools such as reactstrap, react-router-dom.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
