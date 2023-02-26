@@ -11,7 +11,7 @@ import {BooksItemShow} from "../bookPage/booksItem"
 import {Routes, Route} from "react-router-dom";
 import CharacterItem from "../characterPage/characterItem"
 export default class App extends Component {
-    gotService =  new GotService();
+    gotService = new GotService();
     constructor(props){
         super(props);
         this.state = {

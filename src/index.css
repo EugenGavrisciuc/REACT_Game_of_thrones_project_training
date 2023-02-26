@@ -18,3 +18,8 @@ a:active {
     text-decoration: none;
     color: inherit;
 }
+
+body {
+    background-image: url('/public/img/got.jpeg');
+    background-size: cover;
+}
