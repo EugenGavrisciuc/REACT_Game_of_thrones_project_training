@@ -2,7 +2,7 @@
   "name": "react_gotapp_training",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://EugenGavrisciuc.github.io/reactgotapp",
+  "homepage": "https://eugengavrisciuc.github.io/REACT_Game_of_thrones_project_training/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
