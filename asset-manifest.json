@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/REACT_Game_of_thrones_project_training/static/css/main.e90554b8.css",
-    "main.js": "/REACT_Game_of_thrones_project_training/static/js/main.f961cf88.js",
-    "static/media/got.jpeg": "/REACT_Game_of_thrones_project_training/static/media/got.7783d0b428949a09e45f.jpeg",
-    "index.html": "/REACT_Game_of_thrones_project_training/index.html",
-    "main.e90554b8.css.map": "/REACT_Game_of_thrones_project_training/static/css/main.e90554b8.css.map",
-    "main.f961cf88.js.map": "/REACT_Game_of_thrones_project_training/static/js/main.f961cf88.js.map"
+    "main.css": "/reactgotapp/static/css/main.e35d1c06.css",
+    "main.js": "/reactgotapp/static/js/main.f11c586a.js",
+    "static/media/got.jpeg": "/reactgotapp/static/media/got.7783d0b428949a09e45f.jpeg",
+    "index.html": "/reactgotapp/index.html",
+    "main.e35d1c06.css.map": "/reactgotapp/static/css/main.e35d1c06.css.map",
+    "main.f11c586a.js.map": "/reactgotapp/static/js/main.f11c586a.js.map"
   },
   "entrypoints": [
-    "static/css/main.e90554b8.css",
-    "static/js/main.f961cf88.js"
+    "static/css/main.e35d1c06.css",
+    "static/js/main.f11c586a.js"
   ]
 }
